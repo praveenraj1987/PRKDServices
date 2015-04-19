@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44fe4c04-dc10-42d1-b9d1-bd4b35dc762c" name="Default" comment="" />
+    <list default="true" id="44fe4c04-dc10-42d1-b9d1-bd4b35dc762c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="jax-rs-heroku.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -531,12 +533,12 @@
       <updated>1429428015697</updated>
       <workItem from="1429428019234" duration="1287000" />
       <workItem from="1429429794094" duration="10129000" />
-      <workItem from="1429444046248" duration="232000" />
+      <workItem from="1429444046248" duration="353000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11648000" />
+    <option name="totallyTimeSpent" value="11769000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
