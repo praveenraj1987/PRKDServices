@@ -46,8 +46,9 @@ public class ImageUpload {
 
     // save it
     Map uploadResult = writeToFile(uploadedInputStream, uploadedFileLocation);
-      String publicId = (String) uploadResult.get("public_id");
-    String output = "File uploaded to : " + publicId;
+      String url = (String) uploadResult.get("url");
+    String output = "File uploaded to : " + url;
+
 
 //    File toUpload = new File("daisy.png");
 //    Map uploadResult = cloudinary.uploader().upload(toUpload);
@@ -64,7 +65,7 @@ public class ImageUpload {
     String password = dbUri.getUserInfo().split(":")[1];
     int port = dbUri.getPort();
 
-    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + port + dbUri.getPath();
+    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + port + dbUri.getPath() + "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
 
     return DriverManager.getConnection(dbUrl, username, password);
   }
