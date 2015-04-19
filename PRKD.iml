@@ -48,5 +48,6 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.2.1" level="project" />
+    <orderEntry type="library" name="Maven: postgresql:postgresql:9.0-801.jdbc4" level="project" />
   </component>
 </module>
