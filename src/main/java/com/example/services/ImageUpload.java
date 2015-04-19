@@ -59,7 +59,7 @@ public class ImageUpload {
 
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
-      stmt.executeUpdate("INSERT INTO file_urls VALUES (" + url+ ")");
+      stmt.executeUpdate("INSERT INTO file_urls VALUES (\'" + url + "\')");
       String output = "File uploaded to : " + url;
 
       return Response.status(200).entity(output).build();
