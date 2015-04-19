@@ -49,12 +49,25 @@ public class ImageUpload {
       String url = (String) uploadResult.get("url");
     String output = "File uploaded to : " + url;
 
+    return store_in_db(url);
+  }
 
-//    File toUpload = new File("daisy.png");
-//    Map uploadResult = cloudinary.uploader().upload(toUpload);
+  private Response store_in_db(String url) {
+    Connection connection = null;
+    try {
+      connection = getConnection();
 
-    return Response.status(200).entity(output).build();
+      Statement stmt = connection.createStatement();
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
+      stmt.executeUpdate("INSERT INTO file_urls VALUES (url)");
+      String output = "File uploaded to : " + url;
 
+      return Response.status(200).entity(output).build();
+    } catch (Exception e) {
+      return Response.status(200).entity("There was an error: " + e.getMessage()).build();
+    } finally {
+      if (connection != null) try{connection.close();} catch(SQLException e){}
+    }
   }
 
 
@@ -80,13 +93,11 @@ public class ImageUpload {
       connection = getConnection();
 
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-      ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+      ResultSet rs = stmt.executeQuery("SELECT filename_url FROM file_urls");
 
       String out = "Hello!\n";
       while (rs.next()) {
-        out += "Read from DB: " + rs.getTimestamp("tick") + "\n";
+        out += "Read from DB: " + rs.getString("filename_url") + "\n";
       }
 
       return Response.status(200).entity(out).build();
