@@ -26,6 +26,8 @@ import com.cloudinary.utils.ObjectUtils;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE;
+
 @Path("/file")
 public class ImageUpload {
 
@@ -57,7 +59,14 @@ public class ImageUpload {
     Timestamp timestamp;
     try {
       parsedDate = dateFormat.parse(time);
-    } catch (ParseException e) {
+    }
+    catch (ParseException e) {
+      java.util.Date d = new java.util.Date();
+      try {
+        parsedDate = dateFormat.parse(new Timestamp(d.getTime()).toString());
+      } catch (ParseException e1) {
+        e1.printStackTrace();
+      }
       e.printStackTrace();
     }
     timestamp= new java.sql.Timestamp(parsedDate.getTime());
@@ -119,6 +128,7 @@ public class ImageUpload {
 
   @POST
   @Path("/nearby")
+  @Consumes(MediaType.TEXT_PLAIN)
   public Response showNearBy(
       @FormDataParam("lat") String userLat,
       @FormDataParam("lon") String userLon
