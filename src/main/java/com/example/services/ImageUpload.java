@@ -146,13 +146,13 @@ public class ImageUpload {
             .add("userLon", userLon)
             .add("ImageList", factory.createArrayBuilder()
                 .add(factory.createObjectBuilder()
-                    .add("image", rs.getString("filename_url"))
-                    .add("lat",lat)
-                    .add("lon",lon)
-                    .add("distance", distInMeters)
-                  )).build();
+                        .add("image", rs.getString("filename_url"))
+                        .add("lat", lat)
+                        .add("lon", lon)
+                        .add("distance", distInMeters)
+                ));
       }
-      out = result.toString();
+      out = result.build().toString();
       return Response.status(200).entity(out).build();
     } catch (Exception e) {
     return Response.status(200).entity("There was an error: " + e.getMessage()).build();
