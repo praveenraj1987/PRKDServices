@@ -137,23 +137,22 @@ public class ImageUpload {
 
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
       JsonObjectBuilder result = factory.createObjectBuilder();
-      String out = "userLat = " + userLat + "<br> userLon = " + userLon + "<br>";
+      JsonArrayBuilder resultList = factory.createArrayBuilder();
       while (rs.next()) {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
         double distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
-            result.add("userLat", userLat)
-            .add("userLon", userLon)
-            .add("ImageList", factory.createArrayBuilder()
-                .add(factory.createObjectBuilder()
-                        .add("image", rs.getString("filename_url"))
-                        .add("lat", lat)
-                        .add("lon", lon)
-                        .add("distance", distInMeters)
-                ));
+        resultList.add(factory.createObjectBuilder()
+                .add("image", rs.getString("filename_url"))
+                .add("lat", lat)
+                .add("lon", lon)
+                .add("distance", distInMeters)
+        );
       }
-      out = result.build().toString();
-      return Response.status(200).entity(out).build();
+      result.add("userLat", userLat)
+          .add("userLon", userLon)
+          .add("ImageList", resultList);
+      return Response.status(200).entity(result.build().toString()).build();
     } catch (Exception e) {
     return Response.status(200).entity("There was an error: " + e.getMessage()).build();
     } finally {
