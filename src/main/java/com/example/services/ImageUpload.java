@@ -145,12 +145,16 @@ public class ImageUpload {
       while (rs.next()) {
         float lat = rs.getFloat("lat");
         float lon = rs.getFloat("lon");
-        if(distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon) < 1000) {
-          out += "Start of Record -------: <br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
+        float distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
+//        if(distInMeters < 1000) {
+          out += "Distance is less than 1000meters :" + distInMeters +"<br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
               "File Latitude:->" + lat + "<br>" +
               "File Longitude:->" + lon + "<br>" +
               "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
-        }
+//        }
+//        else{
+//
+//        }
       }
 
       return Response.status(200).entity(out).build();
