@@ -141,7 +141,7 @@ public class ImageUpload {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
       ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
-      String out = "";
+      String out = "userLat = " + userLat + "<br> userLon = " + userLon + "<br>";
       while (rs.next()) {
         float lat = rs.getFloat("lat");
         float lon = rs.getFloat("lon");
