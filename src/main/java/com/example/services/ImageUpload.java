@@ -117,7 +117,10 @@ public class ImageUpload {
 
       String out = "Hello!\n";
       while (rs.next()) {
-        out += "Read from DB: " + rs.getString("filename_url") + "\n";
+        out += "Start of Record -------: \n" + rs.getString("filename_url") + "\n" +
+        rs.getString("lat") + "\n" +
+        rs.getString("lon") + "\n"+
+        rs.getTimestamp("time") + "\n\n\n";
       }
 
       return Response.status(200).entity(out).build();
