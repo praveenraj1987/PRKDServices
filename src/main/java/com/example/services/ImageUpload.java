@@ -145,12 +145,15 @@ public class ImageUpload {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
         double distInMeters = distFrom(usrLat, usrLon, lat, lon);
+
+        if(distInMeters < 1000){
         resultList.add(factory.createObjectBuilder()
                 .add("image", rs.getString("filename_url"))
                 .add("lat", lat)
                 .add("lon", lon)
                 .add("distance", distInMeters)
         );
+        }
       }
       result.add("userLat", usrLat)
           .add("userLon", usrLon)
