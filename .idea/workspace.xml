@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44fe4c04-dc10-42d1-b9d1-bd4b35dc762c" name="Default" comment="" />
+    <list default="true" id="44fe4c04-dc10-42d1-b9d1-bd4b35dc762c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="jax-rs-heroku.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageUpload.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ImageUpload.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="1575">
-              <caret line="120" column="16" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.5442177" vertical-offset="270" max-vertical-offset="1575">
+              <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
               <folding>
                 <element signature="method#uploadFile#0;class#ImageUpload#0" expanded="false" />
                 <element signature="method#store_in_db#0;class#ImageUpload#0" expanded="false" />
@@ -50,14 +53,14 @@
                 <element signature="method#distFrom#0;class#ImageUpload#0" expanded="false" />
                 <element signature="method#writeToFile#0;class#ImageUpload#0" expanded="false" />
                 <element signature="e#6503#6560#0" expanded="false" />
-                <marker date="1429944990000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
-                <marker date="1429944990000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
-                <marker date="1429944990000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
-                <marker date="1429944990000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
-                <marker date="1429944990000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
-                <marker date="1429944990000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
-                <marker date="1429944990000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
-                <marker date="1429944990000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
+                <marker date="1429945873000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
+                <marker date="1429945873000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
+                <marker date="1429945873000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
+                <marker date="1429945873000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
+                <marker date="1429945873000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
+                <marker date="1429945873000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
+                <marker date="1429945873000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
+                <marker date="1429945873000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
               </folding>
             </state>
           </provider>
@@ -83,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nearBy.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/nearBy.html">
+      <file leaf-file-name="nearby.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/nearby.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25179857" vertical-offset="0" max-vertical-offset="417">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="390">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -162,8 +165,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/upload.html" />
         <option value="$PROJECT_DIR$/target/classes/com/example/services/ImageUpload.class" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/nearBy.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/nearby.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java" />
       </list>
     </option>
   </component>
@@ -611,12 +615,12 @@
       <workItem from="1429428019234" duration="1287000" />
       <workItem from="1429429794094" duration="10129000" />
       <workItem from="1429444046248" duration="8647000" />
-      <workItem from="1429936143865" duration="4899000" />
+      <workItem from="1429936143865" duration="5168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24962000" />
+    <option name="totallyTimeSpent" value="25231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -737,14 +741,14 @@
             <element signature="method#distFrom#0;class#ImageUpload#0" expanded="false" />
             <element signature="method#writeToFile#0;class#ImageUpload#0" expanded="false" />
             <element signature="e#6503#6560#0" expanded="false" />
-            <marker date="1429944990000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
-            <marker date="1429944990000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
+            <marker date="1429945873000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
+            <marker date="1429945873000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
           </folding>
         </state>
       </provider>
@@ -842,14 +846,14 @@
             <element signature="method#distFrom#0;class#ImageUpload#0" expanded="false" />
             <element signature="method#writeToFile#0;class#ImageUpload#0" expanded="false" />
             <element signature="e#6503#6560#0" expanded="false" />
-            <marker date="1429944990000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
-            <marker date="1429944990000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
+            <marker date="1429945873000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
+            <marker date="1429945873000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
           </folding>
         </state>
       </provider>
@@ -949,14 +953,14 @@
             <element signature="method#distFrom#0;class#ImageUpload#0" expanded="false" />
             <element signature="method#writeToFile#0;class#ImageUpload#0" expanded="false" />
             <element signature="e#6503#6560#0" expanded="false" />
-            <marker date="1429944990000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
-            <marker date="1429944990000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
+            <marker date="1429945873000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
+            <marker date="1429945873000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
           </folding>
         </state>
       </provider>
@@ -1090,29 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="1575">
-          <caret line="120" column="16" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="16" />
-          <folding>
-            <element signature="method#uploadFile#0;class#ImageUpload#0" expanded="false" />
-            <element signature="method#store_in_db#0;class#ImageUpload#0" expanded="false" />
-            <element signature="method#getConnection#0;class#ImageUpload#0" expanded="false" />
-            <element signature="method#distFrom#0;class#ImageUpload#0" expanded="false" />
-            <element signature="method#writeToFile#0;class#ImageUpload#0" expanded="false" />
-            <element signature="e#6503#6560#0" expanded="false" />
-            <marker date="1429944990000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
-            <marker date="1429944990000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
-            <marker date="1429944990000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
-            <marker date="1429944990000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="99" max-vertical-offset="540">
@@ -1129,11 +1110,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/nearBy.html">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/nearby.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25179857" vertical-offset="0" max-vertical-offset="417">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="390">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/services/ImageUpload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5442177" vertical-offset="270" max-vertical-offset="1575">
+          <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+          <folding>
+            <element signature="method#uploadFile#0;class#ImageUpload#0" expanded="false" />
+            <element signature="method#store_in_db#0;class#ImageUpload#0" expanded="false" />
+            <element signature="method#getConnection#0;class#ImageUpload#0" expanded="false" />
+            <element signature="method#distFrom#0;class#ImageUpload#0" expanded="false" />
+            <element signature="method#writeToFile#0;class#ImageUpload#0" expanded="false" />
+            <element signature="e#6503#6560#0" expanded="false" />
+            <marker date="1429945873000" expanded="false" signature="2354:2490" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2550" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="false" signature="2520:2675" placeholder="INSERT INTO ..." />
+            <marker date="1429945873000" expanded="true" signature="4373:4429" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="4473:4496" placeholder="SELECT * FRO..file_urls..." />
+            <marker date="1429945873000" expanded="true" signature="5566:5622" placeholder="CREATE TABLE..IF..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5673" placeholder="SELECT tick ..ticks..." />
+            <marker date="1429945873000" expanded="true" signature="5666:5689" placeholder="SELECT filen..file_urls..." />
+          </folding>
         </state>
       </provider>
     </entry>
