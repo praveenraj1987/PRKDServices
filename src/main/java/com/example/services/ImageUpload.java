@@ -1,32 +1,26 @@
 package com.example.services;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Map;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
+
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
-import com.sun.jersey.core.header.FormDataContentDisposition;
-import com.sun.jersey.multipart.FormDataParam;
-
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+import javax.json.*;
 
 @Path("/file")
 public class ImageUpload {
@@ -80,8 +74,8 @@ public class ImageUpload {
 
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text," +
-          "lat float," +
-          "lon float," +
+          "lat double," +
+          "lon double," +
           "time timestamp)");
       stmt.executeUpdate("INSERT INTO file_urls VALUES (\'" + url + "\'," +
           "\'" + lat + "\'," +
@@ -112,7 +106,7 @@ public class ImageUpload {
   }
 
 
-  public static float distFrom(float lat1, float lng1, float lat2, float lng2) {
+  public static double distFrom(double lat1, double lng1, double lat2, double lng2) {
     double earthRadius = 6371000; //meters
     double dLat = Math.toRadians(lat2-lat1);
     double dLng = Math.toRadians(lng2-lng1);
@@ -141,11 +135,32 @@ public class ImageUpload {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
       ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
+      JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
+      JsonObject value = factory.createObjectBuilder()
+          .add("firstName", "John")
+          .add("lastName", "Smith")
+          .add("age", 25)
+          .add("address", factory.createObjectBuilder()
+              .add("streetAddress", "21 2nd Street")
+              .add("city", "New York")
+              .add("state", "NY")
+              .add("postalCode", "10021"))
+          .add("phoneNumber", factory.createArrayBuilder()
+              .add(factory.createObjectBuilder()
+                  .add("type", "home")
+                  .add("number", "212 555-1234"))
+              .add(factory.createObjectBuilder()
+                  .add("type", "fax")
+                  .add("number", "646 555-4567")))
+          .build();
+
+
+
       String out = "userLat = " + userLat + "<br> userLon = " + userLon + "<br>";
       while (rs.next()) {
-        float lat = rs.getFloat("lat");
-        float lon = rs.getFloat("lon");
-        float distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
+        double lat = rs.getDouble("lat");
+        double lon = rs.getDouble("lon");
+        double distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
 //        if(distInMeters < 1000) {
           out += "Distance is less than 1000meters :" + distInMeters +"<br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
               "File Latitude:->" + lat + "<br>" +
@@ -155,6 +170,7 @@ public class ImageUpload {
 //        else{
 //
 //        }
+        out = out + value.toString();
       }
 
       return Response.status(200).entity(out).build();
@@ -181,7 +197,7 @@ public class ImageUpload {
       String out = "";
       while (rs.next()) {
         out += "Start of Record -------: <br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
-            "File Latitude:->" + rs.getFloat("lat") + "<br>" +
+            "File Latitude:->" + rs.getDouble("lat") + "<br>" +
             "File Longitude:->" + rs.getFloat("lon") + "<br>"+
             "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
       }
