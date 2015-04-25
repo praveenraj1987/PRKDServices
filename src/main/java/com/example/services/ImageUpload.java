@@ -181,10 +181,10 @@ public class ImageUpload {
 
       String out = "";
       while (rs.next()) {
-        out += "Start of Record -------: <br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
-            "File Latitude:->" + rs.getDouble("lat") + "<br>" +
-            "File Longitude:->" + rs.getFloat("lon") + "<br>"+
-            "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
+        out += "Start of Record -------: <br>" + "File URL:->   " + rs.getString("filename_url") + "<br>" +
+            "File Latitude:->   " + rs.getDouble("lat") + "<br>" +
+            "File Longitude:->  " + rs.getFloat("lon") + "<br>"+
+            "File TimeStamp:->  " + rs.getTimestamp("time") + "<br><br>";
       }
 
       return Response.status(200).entity(out).build();
