@@ -106,19 +106,33 @@ public class ImageUpload {
   }
 
 
-  public static double distFrom(double lat1, double lng1, double lat2, double lng2) {
-    double earthRadius = 6371000; //meters
-    double dLat = Math.toRadians(lat2-lat1);
-    double dLng = Math.toRadians(lng2-lng1);
-    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-            Math.sin(dLng/2) * Math.sin(dLng/2);
-    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    float dist = (float) (earthRadius * c);
+//  public static double distFrom(double lat1, double lng1, double lat2, double lng2) {
+//    double earthRadius = 6371000; //meters
+//    double dLat = Math.toRadians(lat2-lat1);
+//    double dLng = Math.toRadians(lng2-lng1);
+//    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+//        Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+//            Math.sin(dLng/2) * Math.sin(dLng/2);
+//    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+//    float dist = (float) (earthRadius * c);
+//
+//    return dist;
+//  }
+  public final static double AVERAGE_RADIUS_OF_EARTH = 6371000;
+  public int distFrom(double userLat, double userLng,
+                               double venueLat, double venueLng) {
 
-    return dist;
+    double latDistance = Math.toRadians(userLat - venueLat);
+    double lngDistance = Math.toRadians(userLng - venueLng);
+
+    double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+        + Math.cos(Math.toRadians(userLat)) * Math.cos(Math.toRadians(venueLat))
+        * Math.sin(lngDistance / 2) * Math.sin(lngDistance / 2);
+
+    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return (int) (Math.round(AVERAGE_RADIUS_OF_EARTH * c));
   }
-
 
   @POST
   @Path("/nearby")
