@@ -136,24 +136,23 @@ public class ImageUpload {
       ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
+      JsonObjectBuilder result = factory.createObjectBuilder();
       String out = "userLat = " + userLat + "<br> userLon = " + userLon + "<br>";
       while (rs.next()) {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
         double distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
-        JsonObject result = factory.createObjectBuilder()
-            .add("userLat", userLat)
+            result.add("userLat", userLat)
             .add("userLon", userLon)
             .add("ImageList", factory.createArrayBuilder()
                 .add(factory.createObjectBuilder()
-                    .add("image1", rs.getString("filename_url"))
+                    .add("image", rs.getString("filename_url"))
                     .add("lat",lat)
                     .add("lon",lon)
                     .add("distance", distInMeters)
                   )).build();
-        out = result.toString();
       }
-
+      out = result.toString();
       return Response.status(200).entity(out).build();
     } catch (Exception e) {
     return Response.status(200).entity("There was an error: " + e.getMessage()).build();
