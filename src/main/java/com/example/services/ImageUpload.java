@@ -133,32 +133,32 @@ public class ImageUpload {
       @FormDataParam("lat") String userLat,
       @FormDataParam("lon") String userLon
   ) throws IOException{
-//    Connection connection = null;
-//    try {
-//      connection = getConnection();
-//
-//      Statement stmt = connection.createStatement();
-//      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
-//      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
-//
-//      String out = "";
-//      while (rs.next()) {
-//        float lat = rs.getFloat("lat");
-//        float lon = rs.getFloat("lon");
-//        if(distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon) < 1000) {
-//          out += "Start of Record -------: <br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
-//              "File Latitude:->" + lat + "<br>" +
-//              "File Longitude:->" + lon + "<br>" +
-//              "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
-//        }
-//      }
-//
-//      return Response.status(200).entity(out).build();
-//    } catch (Exception e) {
-    return Response.status(200).entity("There was an error: " + userLat + userLon).build();
-//    } finally {
-//      if (connection != null) try{connection.close();} catch(SQLException e){}
-//    }
+    Connection connection = null;
+    try {
+      connection = getConnection();
+
+      Statement stmt = connection.createStatement();
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
+
+      String out = "";
+      while (rs.next()) {
+        float lat = rs.getFloat("lat");
+        float lon = rs.getFloat("lon");
+        if(distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon) < 1000) {
+          out += "Start of Record -------: <br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
+              "File Latitude:->" + lat + "<br>" +
+              "File Longitude:->" + lon + "<br>" +
+              "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
+        }
+      }
+
+      return Response.status(200).entity(out).build();
+    } catch (Exception e) {
+    return Response.status(200).entity("There was an error: " + e.getMessage()).build();
+    } finally {
+      if (connection != null) try{connection.close();} catch(SQLException e){}
+    }
   }
 
 
