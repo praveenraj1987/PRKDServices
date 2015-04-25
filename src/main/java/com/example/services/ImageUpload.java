@@ -138,10 +138,12 @@ public class ImageUpload {
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
       JsonObjectBuilder result = factory.createObjectBuilder();
       JsonArrayBuilder resultList = factory.createArrayBuilder();
+      double usrLat = Double.parseDouble(userLat);
+      double usrLon = Double.parseDouble(userLon);
       while (rs.next()) {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
-        double distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
+        double distInMeters = distFrom(usrLat, usrLon, lat, lon);
         resultList.add(factory.createObjectBuilder()
                 .add("image", rs.getString("filename_url"))
                 .add("lat", lat)
@@ -149,7 +151,7 @@ public class ImageUpload {
                 .add("distance", distInMeters)
         );
       }
-      result.add("userLat", userLat)
+      result.add("userLat", usrLat)
           .add("userLon", userLon)
           .add("ImageList", resultList);
       return Response.status(200).entity(result.build().toString()).build();
