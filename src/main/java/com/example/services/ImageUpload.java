@@ -126,13 +126,12 @@ public class ImageUpload {
   }
 
 
-//  @POST
-//  @Path("/nearby")
-//  @Consumes(MediaType.TEXT_PLAIN)
-//  public Response showNearBy(
-//      @FormDataParam("lat") String userLat,
-//      @FormDataParam("lon") String userLon
-//  ) throws IOException{
+  @POST
+  @Path("/nearby")
+  public Response showNearBy(
+      @FormDataParam("lat") String userLat,
+      @FormDataParam("lon") String userLon
+  ) throws IOException{
 //    Connection connection = null;
 //    try {
 //      connection = getConnection();
@@ -155,12 +154,12 @@ public class ImageUpload {
 //
 //      return Response.status(200).entity(out).build();
 //    } catch (Exception e) {
-//      return Response.status(200).entity("There was an error: " + e.getMessage()).build();
+      return Response.status(200).entity("There was an error: " + userLat + userLon).build();
 //    } finally {
 //      if (connection != null) try{connection.close();} catch(SQLException e){}
 //    }
-//  }
-//
+  }
+
 
   @GET
   @Path("/db")
