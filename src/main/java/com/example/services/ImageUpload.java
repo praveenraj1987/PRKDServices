@@ -103,6 +103,55 @@ public class ImageUpload {
   }
 
 
+  public static float distFrom(float lat1, float lng1, float lat2, float lng2) {
+    double earthRadius = 6371000; //meters
+    double dLat = Math.toRadians(lat2-lat1);
+    double dLng = Math.toRadians(lng2-lng1);
+    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+            Math.sin(dLng/2) * Math.sin(dLng/2);
+    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    float dist = (float) (earthRadius * c);
+
+    return dist;
+  }
+
+
+  @GET
+  @Path("/nearBy")
+  public Response showNearBy(
+      @FormDataParam("lat") String userLat,
+      @FormDataParam("lon") String userLon
+  ) throws IOException{
+    Connection connection = null;
+    try {
+      connection = getConnection();
+
+      Statement stmt = connection.createStatement();
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
+
+      String out = "";
+      while (rs.next()) {
+        float lat = rs.getFloat("lat");
+        float lon = rs.getFloat("lon");
+        if(distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon) < 1000) {
+          out += "Start of Record -------: <br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
+              "File Latitude:->" + lat + "<br>" +
+              "File Longitude:->" + lon + "<br>" +
+              "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
+        }
+      }
+
+      return Response.status(200).entity(out).build();
+    } catch (Exception e) {
+      return Response.status(200).entity("There was an error: " + e.getMessage()).build();
+    } finally {
+      if (connection != null) try{connection.close();} catch(SQLException e){}
+    }
+  }
+
+
   @GET
   @Path("/db")
   public Response showDatabase()
