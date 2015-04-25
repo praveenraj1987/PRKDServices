@@ -136,41 +136,22 @@ public class ImageUpload {
       ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
-      JsonObject value = factory.createObjectBuilder()
-          .add("firstName", "John")
-          .add("lastName", "Smith")
-          .add("age", 25)
-          .add("address", factory.createObjectBuilder()
-              .add("streetAddress", "21 2nd Street")
-              .add("city", "New York")
-              .add("state", "NY")
-              .add("postalCode", "10021"))
-          .add("phoneNumber", factory.createArrayBuilder()
-              .add(factory.createObjectBuilder()
-                  .add("type", "home")
-                  .add("number", "212 555-1234"))
-              .add(factory.createObjectBuilder()
-                  .add("type", "fax")
-                  .add("number", "646 555-4567")))
-          .build();
-
-
-
       String out = "userLat = " + userLat + "<br> userLon = " + userLon + "<br>";
       while (rs.next()) {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
         double distInMeters = distFrom(Float.parseFloat(userLat), Float.parseFloat(userLon), lat, lon);
-//        if(distInMeters < 1000) {
-          out += "Distance is less than 1000meters :" + distInMeters +"<br>" + "File URL:->" + rs.getString("filename_url") + "<br>" +
-              "File Latitude:->" + lat + "<br>" +
-              "File Longitude:->" + lon + "<br>" +
-              "File TimeStamp:->" + rs.getTimestamp("time") + "<br><br>";
-//        }
-//        else{
-//
-//        }
-        out = out + value.toString();
+        JsonObject result = factory.createObjectBuilder()
+            .add("userLat", userLat)
+            .add("userLon", userLon)
+            .add("ImageList", factory.createArrayBuilder()
+                .add(factory.createObjectBuilder()
+                    .add("image1", rs.getString("filename_url"))
+                    .add("lat",lat)
+                    .add("lon",lon)
+                    .add("distance", distInMeters)
+                  )).build();
+        out = result.toString();
       }
 
       return Response.status(200).entity(out).build();
