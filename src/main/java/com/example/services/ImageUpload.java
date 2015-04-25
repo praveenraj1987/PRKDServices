@@ -74,8 +74,8 @@ public class ImageUpload {
 
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text," +
-          "lat double," +
-          "lon double," +
+          "lat float," +
+          "lon float," +
           "time timestamp)");
       stmt.executeUpdate("INSERT INTO file_urls VALUES (\'" + url + "\'," +
           "\'" + lat + "\'," +
@@ -133,7 +133,10 @@ public class ImageUpload {
       connection = getConnection();
 
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text," +
+          "lat float," +
+          "lon float," +
+          "time timestamp)");
       ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
@@ -176,7 +179,10 @@ public class ImageUpload {
       connection = getConnection();
 
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text," +
+          "lat float," +
+          "lon float," +
+          "time timestamp)");
       ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
       String out = "";
