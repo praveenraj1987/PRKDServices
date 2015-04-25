@@ -128,6 +128,7 @@ public class ImageUpload {
 
   @POST
   @Path("/nearby")
+  @Consumes(MediaType.MULTIPART_FORM_DATA)
   public Response showNearBy(
       @FormDataParam("lat") String userLat,
       @FormDataParam("lon") String userLon
@@ -154,7 +155,7 @@ public class ImageUpload {
 //
 //      return Response.status(200).entity(out).build();
 //    } catch (Exception e) {
-      return Response.status(200).entity("There was an error: " + userLat + userLon).build();
+    return Response.status(200).entity("There was an error: " + userLat + userLon).build();
 //    } finally {
 //      if (connection != null) try{connection.close();} catch(SQLException e){}
 //    }
