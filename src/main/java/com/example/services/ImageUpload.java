@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +42,8 @@ public class ImageUpload {
       @FormDataParam("file") InputStream uploadedInputStream,
       @FormDataParam("file") FormDataContentDisposition fileDetail,
       @FormDataParam("lat") String Lat,
-      @FormDataParam("lon") String Lon) {
+      @FormDataParam("lon") String Lon,
+      @FormDataParam("time") String time) {
 
     String uploadedFileLocation = "./Asset/"+Lat+"/"+Lon+"/" + fileDetail.getFileName();
 
@@ -49,17 +52,33 @@ public class ImageUpload {
       String url = (String) uploadResult.get("url");
     String output = "File uploaded to : " + url;
 
-    return store_in_db(url);
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+    java.util.Date parsedDate = null;
+    Timestamp timestamp;
+    try {
+      parsedDate = dateFormat.parse(time);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    timestamp= new java.sql.Timestamp(parsedDate.getTime());
+    return store_in_db(url, Float.parseFloat(Lat), Float.parseFloat(Lon), timestamp);
   }
 
-  private Response store_in_db(String url) {
+  private Response store_in_db(String url, float lat, float lon, Timestamp time) {
     Connection connection = null;
     try {
       connection = getConnection();
 
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
-      stmt.executeUpdate("INSERT INTO file_urls VALUES (\'" + url + "\')");
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text," +
+          "lat float," +
+          "lon float," +
+          "time timestamp)");
+      stmt.executeUpdate("INSERT INTO file_urls VALUES (\'" + url + "\'," +
+          "\'" + lat + "\'," +
+          "\'" + lon + "\'," +
+          "\'" + time + "\'," +
+          ")");
       String output = "File uploaded to : " + url;
 
       return Response.status(200).entity(output).build();
