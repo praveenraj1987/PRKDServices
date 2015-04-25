@@ -117,7 +117,7 @@ public class ImageUpload {
   }
 
 
-  @GET
+  @POST
   @Path("/nearby")
   public Response showNearBy(
       @FormDataParam("lat") String userLat,
