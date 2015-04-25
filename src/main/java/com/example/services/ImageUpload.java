@@ -113,13 +113,13 @@ public class ImageUpload {
 
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS file_urls (filename_url text)");
-      ResultSet rs = stmt.executeQuery("SELECT filename_url FROM file_urls");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
 
       String out = "Hello!\n";
       while (rs.next()) {
         out += "Start of Record -------: \n" + rs.getString("filename_url") + "\n" +
-        rs.getString("lat") + "\n" +
-        rs.getString("lon") + "\n"+
+        rs.getFloat("lat") + "\n" +
+        rs.getFloat("lon") + "\n"+
         rs.getTimestamp("time") + "\n\n\n";
       }
 
