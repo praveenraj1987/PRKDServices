@@ -81,7 +81,7 @@ public class ImageUpload {
       stmt.executeUpdate("INSERT INTO file_urls VALUES (\'" + url + "\'," +
           "\'" + lat + "\'," +
           "\'" + lon + "\'," +
-          "\'" + time + "\'" +
+          " current_timestamp " +
           ")");
       String output = "File uploaded to : " + url;
 
