@@ -18,6 +18,7 @@ import java.net.URISyntaxException;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.json.*;
@@ -137,7 +138,7 @@ public class ImageUpload {
           "lat float," +
           "lon float," +
           "time timestamp)");
-      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls WHERE time >= NOW() - INTERVAL 10 MINUTE");
 
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
       JsonObjectBuilder result = factory.createObjectBuilder();
@@ -147,6 +148,12 @@ public class ImageUpload {
       while (rs.next()) {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
+        Timestamp time = rs.getTimestamp("time");
+        Calendar then = Calendar.getInstance();
+        then.setTime(time);
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, -10);
+        long diff = now.compareTo(then);
         double distInMeters = distFrom(usrLat, usrLon, lat, lon);
 
         if(distInMeters < 1000){
@@ -155,6 +162,7 @@ public class ImageUpload {
                 .add("lat", lat)
                 .add("lon", lon)
                 .add("distance", distInMeters)
+                .add("time", time.toString())
         );
         }
       }
