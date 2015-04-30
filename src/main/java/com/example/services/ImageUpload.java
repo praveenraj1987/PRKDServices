@@ -156,7 +156,7 @@ public class ImageUpload {
         long diff = now.compareTo(then);
         double distInMeters = distFrom(usrLat, usrLon, lat, lon);
 
-        if(distInMeters < 1000){
+        if(distInMeters < 1000 && diff > 0){
         resultList.add(factory.createObjectBuilder()
                 .add("image", rs.getString("filename_url"))
                 .add("lat", lat)
