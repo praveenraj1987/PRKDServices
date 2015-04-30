@@ -18,6 +18,7 @@ import java.net.URISyntaxException;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.json.*;
@@ -147,14 +148,21 @@ public class ImageUpload {
       while (rs.next()) {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
+        Timestamp time = rs.getTimestamp("time");
+        Calendar then = Calendar.getInstance();
+        then.setTime(time);
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, -10);
+        long diff = now.compareTo(then);
         double distInMeters = distFrom(usrLat, usrLon, lat, lon);
 
-        if(distInMeters < 1000){
+        if(distInMeters < 1000 && diff > 0){
         resultList.add(factory.createObjectBuilder()
                 .add("image", rs.getString("filename_url"))
                 .add("lat", lat)
                 .add("lon", lon)
                 .add("distance", distInMeters)
+                .add("time", time.toString())
         );
         }
       }
