@@ -138,7 +138,7 @@ public class ImageUpload {
           "lat float," +
           "lon float," +
           "time timestamp)");
-      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls WHERE time >= NOW() - INTERVAL 10 MINUTE");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM file_urls WHERE time >= current_timestamp - interval '10 minutes'");
 
       JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
       JsonObjectBuilder result = factory.createObjectBuilder();
