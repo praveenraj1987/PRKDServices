@@ -149,14 +149,14 @@ public class ImageUpload {
         double lat = rs.getDouble("lat");
         double lon = rs.getDouble("lon");
         Timestamp time = rs.getTimestamp("time");
-        Calendar then = Calendar.getInstance();
-        then.setTime(time);
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.MINUTE, -10);
-        long diff = now.compareTo(then);
+//        Calendar then = Calendar.getInstance();
+//        then.setTime(time);
+//        Calendar now = Calendar.getInstance();
+//        now.add(Calendar.MINUTE, -10);
+//        long diff = now.compareTo(then);
         double distInMeters = distFrom(usrLat, usrLon, lat, lon);
 
-        if(distInMeters < 1000 && diff > 0){
+        if(distInMeters < 1000){
         resultList.add(factory.createObjectBuilder()
                 .add("image", rs.getString("filename_url"))
                 .add("lat", lat)
